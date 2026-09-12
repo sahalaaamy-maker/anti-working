@@ -2,34 +2,45 @@
 
 
 
-# [Project Name] 🎯
+# [DISTROMINIA] 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: [THOTTATHILE RAJAKANMAR]
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
+- Team Lead: [SAHALA] - [ACECOLLEGE OF ENGINEERING]
+- Member 2: [FATHIMATH FIDA] - [ACE COLLEGE OF ENGINEERING]
 - Member 3: [Name] - [College]
 
 ### Project Description
-[2-3 lines about what your project does]
+[IT DISTRACT US FROM WHAT WE WANT TO DO]
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+[LAZINESS]
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+[MORE LAZINESS]
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- [JAVASCRIPT]
+- frontend: React.js / Angular / Vue.js
+Backend: Node.js with Express.js / Django / Spring Boot
+Database: MySQL / MongoDB / PostgreSQL]
+- [UI: Bootstrap / Tailwind CSS / Material UI
+HTTP/API: Axios / Fetch API
+Authentication: JWT / Passport.js
+Data handling: Pandas / NumPy (if applicable)
+Other: Any project-specific libraries]
+- [IDE: Visual Studio Code / IntelliJ IDEA
+Version Control: Git, GitHub
+API Testing: Postman
+Database Tool: MySQL Workbench / MongoDB Compass
+Build/Package Management: npm / Maven / Gradle
+Deployment: Docker / Vercel / Netlify / AWS]
 
 For Hardware:
 - [List main components]
@@ -48,14 +59,10 @@ For Software:
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+<img width="813" height="988" alt="Screenshot 2026-09-12 054110" src="https://github.com/user-attachments/assets/cb42d8a7-5cdd-4892-94d2-6c91c7262198" />
+CHAT WINDOW
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
 
 # Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
