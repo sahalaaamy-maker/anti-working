@@ -1,0 +1,1429 @@
+/* ==========================================================================
+   DISTROMINIA — Modern Cute & Minimal Anti-Productivity Theme
+   ========================================================================== */
+
+:root {
+  /* Core Pastel Color Palette */
+  --bg-main: #FAF8F5;
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --text-main: #2E2738;
+  --text-muted: #7A7485;
+  --text-subtle: #A39DB0;
+
+  /* Pastel Accents */
+  --pastel-peach: #FFE5D9;
+  --pastel-peach-deep: #FFCAD4;
+  --pastel-pink: #FFF0F3;
+  --pastel-pink-border: #FFCCD5;
+  --pastel-coral: #FFAAA6;
+  --pastel-lavender: #EDE9FE;
+  --pastel-lavender-border: #DDD6FE;
+  --pastel-lavender-deep: #C4B5FD;
+  --pastel-mint: #D8F3DC;
+  --pastel-cream: #FFFDF9;
+
+  /* Chat Bubble Tints - strictly pale pink and pale lavender */
+  --bubble-aamy: #FFF0F3;
+  --bubble-aamy-border: #FFD9E1;
+  --bubble-aamy-text: #2E2738;
+
+  --bubble-user: #EDE9FE;
+  --bubble-user-border: #DDD6FE;
+  --bubble-user-text: #2E2738;
+
+  /* Shadows & Radius */
+  --shadow-soft: 0 12px 36px -10px rgba(78, 62, 105, 0.08), 0 4px 16px -2px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 16px 40px -12px rgba(92, 70, 120, 0.09), 0 2px 8px -1px rgba(0, 0, 0, 0.03);
+  --shadow-float: 0 8px 24px -4px rgba(255, 170, 166, 0.25);
+  --shadow-bubble: 0 3px 12px -2px rgba(46, 39, 56, 0.04);
+
+  --radius-pill: 9999px;
+  --radius-xl: 26px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  /* Typography */
+  --font-main: 'Quicksand', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fredoka', 'Quicksand', cursive, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(circle at 15% 12%, rgba(255, 229, 217, 0.5) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(237, 233, 254, 0.55) 0%, transparent 45%);
+}
+
+/* Ambient pastel background orbs */
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.65;
+  animation: floatAmbient 14s ease-in-out infinite alternate;
+}
+
+.glow-1 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, #FFE5D9 0%, rgba(255, 229, 217, 0) 70%);
+  top: -80px;
+  left: -5%;
+}
+
+.glow-2 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #EDE9FE 0%, rgba(237, 233, 254, 0) 70%);
+  bottom: 2%;
+  right: -8%;
+  animation-delay: -7s;
+}
+
+.glow-3 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, #FFF0F3 0%, rgba(255, 240, 243, 0) 70%);
+  top: 40%;
+  left: 60%;
+  animation-delay: -3s;
+}
+
+@keyframes floatAmbient {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(35px) scale(1.08); }
+}
+
+/* Main Layout Container */
+.app-container {
+  width: 100%;
+  max-width: 580px;
+  min-height: 100vh;
+  padding: 24px 20px 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Header Section
+   ========================================================================== */
+.site-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.header-badges {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+/* Required "mischief 99%" Badge */
+.mischief-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #B43E54;
+  background: linear-gradient(135deg, #FFF0F3 0%, #FFE5D9 100%);
+  border: 1.5px solid #FFCAD4;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 12px -3px rgba(255, 170, 166, 0.3);
+  user-select: none;
+  animation: subtleBounce 4s ease-in-out infinite;
+}
+
+.badge-icon {
+  font-size: 0.9rem;
+}
+
+@keyframes subtleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* Required Heading: "DISTROMINIA" */
+.site-title {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-main);
+  line-height: 1.15;
+  margin-bottom: 4px;
+  background: linear-gradient(135deg, #3D2D50 0%, #764A6A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Required Subtitle: "a tiny sanctuary for avoiding things" */
+.site-subtitle {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #7B6882;
+  margin-bottom: 4px;
+}
+
+/* Required Tagline: "Your very own pocket-sized interruption." */
+.site-tagline {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Main Pet Stage: Aamy
+   ========================================================================== */
+.pet-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+/* Speech Bubble above Aamy */
+.pet-bubble-wrap {
+  min-height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.pet-speech-bubble {
+  position: relative;
+  background: var(--pastel-cream);
+  border: 1.5px solid #F3DFE5;
+  padding: 8px 18px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 18px -4px rgba(78, 62, 105, 0.07);
+  max-width: 86%;
+  text-align: center;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pet-speech-bubble p {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #4D4058;
+}
+
+.speech-arrow {
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: var(--pastel-cream);
+  border-right: 1.5px solid #F3DFE5;
+  border-bottom: 1.5px solid #F3DFE5;
+}
+
+/* Pet Avatar Interactive Container */
+.pet-wrapper {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pet-wrapper:hover {
+  transform: scale(1.04);
+}
+
+.pet-wrapper:focus-visible {
+  outline: 3px solid var(--pastel-lavender-deep);
+  border-radius: 50%;
+}
+
+.pet-avatar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: floatPet 4.5s ease-in-out infinite;
+}
+
+.aamy-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 8px 16px rgba(255, 170, 166, 0.22));
+}
+
+/* Animated Pet Elements */
+@keyframes floatPet {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.2deg);
+  }
+}
+
+.pet-shadow {
+  position: absolute;
+  bottom: 8px;
+  width: 110px;
+  height: 18px;
+  background: radial-gradient(ellipse, rgba(163, 137, 160, 0.22) 0%, rgba(163, 137, 160, 0) 70%);
+  border-radius: 50%;
+  animation: shadowPulse 4.5s ease-in-out infinite;
+}
+
+@keyframes shadowPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(0.86);
+    opacity: 0.45;
+  }
+}
+
+/* Subtle sparkle twinkling around Aamy */
+.sparkles path {
+  transform-origin: center;
+  animation: sparkleTwinkle 2.8s ease-in-out infinite alternate;
+}
+
+.sparkle-1 { animation-delay: 0s; }
+.sparkle-2 { animation-delay: 0.7s; }
+.sparkle-3 { animation-delay: 1.4s; }
+.sparkle-4 { animation-delay: 2.1s; }
+
+@keyframes sparkleTwinkle {
+  0% { transform: scale(0.6) rotate(0deg); opacity: 0.3; }
+  100% { transform: scale(1.15) rotate(45deg); opacity: 1; }
+}
+
+/* Cute Ear wiggle */
+.ear-left {
+  transform-origin: 75px 65px;
+  animation: earWiggleLeft 5s ease-in-out infinite;
+}
+
+.ear-right {
+  transform-origin: 125px 65px;
+  animation: earWiggleRight 5s ease-in-out infinite;
+}
+
+@keyframes earWiggleLeft {
+  0%, 88%, 100% { transform: rotate(0deg); }
+  92% { transform: rotate(-8deg); }
+  96% { transform: rotate(4deg); }
+}
+
+@keyframes earWiggleRight {
+  0%, 90%, 100% { transform: rotate(0deg); }
+  94% { transform: rotate(8deg); }
+  98% { transform: rotate(-4deg); }
+}
+
+/* Interactive Poke Squish Animation */
+.pet-wrapper.poked .pet-avatar {
+  animation: pokeSquish 0.55s cubic-bezier(0.36, 0, 0.66, -0.56);
+}
+
+@keyframes pokeSquish {
+  0% { transform: scale(1, 1); }
+  25% { transform: scale(1.22, 0.78) translateY(8px); }
+  50% { transform: scale(0.85, 1.18) translateY(-10px); }
+  75% { transform: scale(1.08, 0.94) translateY(2px); }
+  100% { transform: scale(1, 1) translateY(0); }
+}
+
+/* Required Status Label: “aamy · online & unhelpful” */
+.pet-status-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #EBE4EE;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.03);
+  margin-top: 4px;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10B981;
+  position: relative;
+}
+
+.status-indicator::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background-color: #10B981;
+  opacity: 0.4;
+  animation: statusPulse 2s ease-out infinite;
+}
+
+@keyframes statusPulse {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.status-text {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #554A62;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Quick Prompts Chips
+   ========================================================================== */
+.quick-prompts-section {
+  margin-bottom: 14px;
+}
+
+.chips-label {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-subtle);
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.quick-prompts-container {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 2px 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.quick-prompts-container::-webkit-scrollbar {
+  display: none;
+}
+
+.prompt-chip {
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border: 1px solid #EBE4EE;
+  color: #50445C;
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.prompt-chip:hover {
+  background: var(--pastel-peach);
+  border-color: var(--pastel-coral);
+  color: #3D2D50;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 10px -2px rgba(255, 170, 166, 0.3);
+}
+
+/* ==========================================================================
+   Chat Card Section
+   ========================================================================== */
+.chat-card {
+  background: var(--bg-card);
+  border: 1.5px solid #F0E8F2;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  flex: 1;
+}
+
+/* Chat Header */
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1.5px solid #F4EEF6;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.chat-header-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--pastel-coral);
+}
+
+/* Required Chat Title: "CHAT WITH Aamy" */
+.chat-title {
+  font-family: var(--font-display);
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #4A3D58;
+}
+
+.chat-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quick-break-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, #FFF0F3 0%, #EDE9FE 100%);
+  border: 1px solid #E2D4F0;
+  border-radius: var(--radius-pill);
+  padding: 4px 11px;
+  font-family: var(--font-main);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #5C4372;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-break-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--pastel-coral);
+  box-shadow: 0 4px 12px -3px rgba(196, 181, 253, 0.4);
+}
+
+.sound-toggle-btn {
+  background: #FAF7FB;
+  border: 1px solid #EBE4EE;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.sound-toggle-btn:hover {
+  background: var(--pastel-lavender);
+  color: #4A3D58;
+}
+
+/* Chat Messages Container */
+.chat-messages {
+  padding: 18px 18px;
+  overflow-y: auto;
+  max-height: 380px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-behavior: smooth;
+}
+
+/* Custom Soft Scrollbar */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #E8DEEE;
+  border-radius: 10px;
+}
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #D8CAE2;
+}
+
+/* Message Bubble Styles */
+.message {
+  display: flex;
+  gap: 10px;
+  max-width: 86%;
+  animation: messagePop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes messagePop {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Aamy Messages (Pale Pink) */
+.message-aamy {
+  align-self: flex-start;
+}
+
+.avatar-mini {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #FFE5D9 0%, #FFCAD4 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  border: 1.5px solid #FFCAD4;
+  box-shadow: 0 3px 8px -2px rgba(255, 170, 166, 0.3);
+}
+
+.bubble-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.message-aamy .bubble {
+  background-color: var(--bubble-aamy);
+  color: var(--bubble-aamy-text);
+  border: 1.5px solid var(--bubble-aamy-border);
+  border-radius: 4px 18px 18px 18px;
+  padding: 11px 15px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: var(--shadow-bubble);
+}
+
+/* User Messages (Pale Lavender) */
+.message-user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message-user .bubble {
+  background-color: var(--bubble-user);
+  color: var(--bubble-user-text);
+  border: 1.5px solid var(--bubble-user-border);
+  border-radius: 18px 4px 18px 18px;
+  padding: 11px 15px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.5;
+  box-shadow: var(--shadow-bubble);
+}
+
+.message-time {
+  font-size: 0.7rem;
+  color: var(--text-subtle);
+  margin-top: 2px;
+  padding: 0 4px;
+}
+
+.message-user .message-time {
+  text-align: right;
+}
+
+/* ==========================================================================
+   Break Button Trigger (Beneath Aamy Replies)
+   ========================================================================== */
+.break-suggestion-card {
+  margin-top: 6px;
+  display: inline-flex;
+}
+
+.break-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #FFF5F7 0%, #FFE5D9 50%, #EDE9FE 100%);
+  border: 1.5px solid #FFCAD4;
+  color: #593D6B;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  box-shadow: 0 4px 12px -3px rgba(255, 170, 166, 0.35);
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.break-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 16px -3px rgba(255, 170, 166, 0.45);
+  border-color: var(--pastel-coral);
+  color: #3D2350;
+}
+
+.break-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.break-btn-sparkle {
+  display: inline-block;
+  animation: rotateSparkle 3s linear infinite;
+}
+
+@keyframes rotateSparkle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Typing Indicator
+   ========================================================================== */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 18px 10px;
+  animation: fadeIn 0.2s ease;
+}
+
+.typing-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--pastel-pink);
+  border: 1.5px solid var(--bubble-aamy-border);
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--pastel-coral);
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+.dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+  40% { transform: scale(1.15); opacity: 1; }
+}
+
+.typing-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #8C7896;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================================================================
+   Chat Input Form
+   ========================================================================== */
+.chat-input-area {
+  padding: 12px 16px 14px;
+  border-top: 1.5px solid #F4EEF6;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #FAF7FB;
+  border: 1.5px solid #EBE4EE;
+  border-radius: var(--radius-pill);
+  padding: 4px 6px 4px 16px;
+  transition: all 0.2s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--pastel-coral);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3.5px rgba(255, 170, 166, 0.2);
+}
+
+.input-wrapper input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-main);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-main);
+  outline: none;
+}
+
+.input-wrapper input::placeholder {
+  color: #A39DB0;
+  font-weight: 500;
+}
+
+.send-btn {
+  background: linear-gradient(135deg, #FFAAA6 0%, #FFCAD4 100%);
+  border: none;
+  color: #4A2735;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 3px 10px -2px rgba(255, 170, 166, 0.45);
+  flex-shrink: 0;
+}
+
+.send-btn:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow: 0 5px 14px -2px rgba(255, 170, 166, 0.6);
+}
+
+.send-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.send-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: grayscale(20%);
+}
+
+/* Required Hint Text */
+.chat-hint {
+  text-align: center;
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+  margin-top: 7px;
+  letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+}
+
+/* ==========================================================================
+   Mini-Game Modal Backdrop & Card
+   ========================================================================== */
+.game-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(46, 39, 56, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 100;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.game-modal-card {
+  position: relative;
+  background: #FFFFFF;
+  width: 100%;
+  max-width: 440px;
+  border-radius: var(--radius-xl);
+  border: 2px solid #FFD9E1;
+  box-shadow: 0 20px 50px -10px rgba(58, 38, 75, 0.25);
+  overflow: hidden;
+  animation: modalScaleIn 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.game-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #FFF0F3 0%, #FAF7FB 100%);
+  border-bottom: 1.5px solid #F3E8EE;
+}
+
+.game-modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #4A3554;
+}
+
+.game-close-btn {
+  background: #FAF7FB;
+  border: 1px solid #EBE4EE;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.game-close-btn:hover {
+  background: var(--pastel-coral);
+  color: #FFFFFF;
+  border-color: var(--pastel-coral);
+  transform: rotate(90deg);
+}
+
+.game-viewport {
+  padding: 20px;
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #FCFAF8;
+}
+
+/* ==========================================================================
+   Mini-Game 1: Catch the Sparkles
+   ========================================================================== */
+.sparkle-game-area {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background: radial-gradient(circle at center, #FFF4F7 0%, #F5EFF9 100%);
+  border-radius: var(--radius-lg);
+  border: 1.5px dashed #E2D4E5;
+  overflow: hidden;
+  user-select: none;
+}
+
+.sparkle-item {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 12px rgba(255, 170, 166, 0.4);
+  transition: transform 0.15s ease;
+  animation: sparkleFloat 1.8s ease-in-out infinite alternate;
+}
+
+.sparkle-item:hover {
+  transform: scale(1.25);
+}
+
+.sparkle-item.caught {
+  animation: sparkleBurst 0.35s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes sparkleFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-10px) rotate(30deg); }
+}
+
+@keyframes sparkleBurst {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.8; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.game-score-bar {
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6C5779;
+}
+
+/* ==========================================================================
+   Mini-Game 2: Pick a Mystery Blob
+   ========================================================================== */
+.blob-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.mystery-blob {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mystery-blob:hover {
+  transform: translateY(-8px) scale(1.08);
+}
+
+.blob-body {
+  width: 76px;
+  height: 76px;
+  border-radius: 46% 54% 48% 52% / 54% 46% 54% 46%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 8px 18px -4px rgba(78, 62, 105, 0.14);
+  transition: all 0.3s ease;
+  animation: blobMorph 5s ease-in-out infinite alternate;
+}
+
+.blob-1 .blob-body { background: linear-gradient(135deg, #FFE5D9 0%, #FFAAA6 100%); }
+.blob-2 .blob-body { background: linear-gradient(135deg, #EDE9FE 0%, #C4B5FD 100%); }
+.blob-3 .blob-body { background: linear-gradient(135deg, #D8F3DC 0%, #B7E4C7 100%); }
+
+.blob-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #554A62;
+}
+
+@keyframes blobMorph {
+  0% { border-radius: 46% 54% 48% 52% / 54% 46% 54% 46%; }
+  50% { border-radius: 54% 46% 52% 48% / 46% 54% 46% 54%; }
+  100% { border-radius: 48% 52% 54% 46% / 52% 48% 54% 46%; }
+}
+
+/* ==========================================================================
+   Mini-Game 3: Tiny Reaction Test
+   ========================================================================== */
+.reaction-card {
+  width: 100%;
+  height: 220px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.reaction-card.state-wait {
+  background-color: #FFF0F3;
+  border: 2px dashed #FFCCD5;
+  color: #8C586B;
+}
+
+.reaction-card.state-ready {
+  background-color: #D8F3DC;
+  border: 2px solid #74C69D;
+  color: #1B4332;
+  transform: scale(1.02);
+  box-shadow: 0 10px 24px -4px rgba(116, 198, 157, 0.4);
+}
+
+.reaction-card.state-early {
+  background-color: #FFE5D9;
+  border: 2px solid #FFAAA6;
+  color: #9C3D32;
+}
+
+.reaction-emoji {
+  font-size: 2.8rem;
+  margin-bottom: 8px;
+}
+
+.reaction-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.reaction-sub {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   Mini-Game 4: Mood Match
+   ========================================================================== */
+.mood-game {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.mood-prompt-box {
+  background: var(--pastel-pink);
+  border: 1.5px solid var(--pastel-pink-border);
+  border-radius: var(--radius-lg);
+  padding: 14px 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.mood-avatar-preview {
+  font-size: 2.4rem;
+  margin-bottom: 6px;
+}
+
+.mood-prompt-text {
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #4D3C5A;
+}
+
+.mood-options-grid {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  width: 100%;
+}
+
+.mood-btn {
+  flex: 1;
+  background: #FFFFFF;
+  border: 1.5px solid #E6DDEC;
+  border-radius: var(--radius-md);
+  padding: 12px 6px;
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.04);
+}
+
+.mood-btn:hover {
+  transform: translateY(-4px) scale(1.1);
+  border-color: var(--pastel-coral);
+  background: var(--pastel-cream);
+}
+
+/* ==========================================================================
+   Mini-Game 5: Bop the Bubble
+   ========================================================================== */
+.bubble-game-area {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  background: linear-gradient(180deg, #F9F5FD 0%, #FFF5F7 100%);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid #EFE4F2;
+  overflow: hidden;
+}
+
+.game-bubble {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 202, 212, 0.6) 60%, rgba(196, 181, 253, 0.7) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 14px rgba(196, 181, 253, 0.35);
+  animation: bubbleRise 4s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: transform 0.1s ease;
+}
+
+.game-bubble:hover {
+  transform: scale(1.15);
+}
+
+.game-bubble.popped {
+  animation: bubblePopEffect 0.25s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes bubbleRise {
+  0% { transform: translateY(240px); }
+  100% { transform: translateY(-70px); }
+}
+
+@keyframes bubblePopEffect {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.6; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+/* ==========================================================================
+   Mini-Game 6: Guess Aamy's Thought
+   ========================================================================== */
+.thought-game {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.thought-header {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #554462;
+  margin-bottom: 4px;
+}
+
+.thought-card-btn {
+  background: #FFFFFF;
+  border: 1.5px solid #EBE3EE;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  text-align: left;
+  font-family: var(--font-main);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #4D3D58;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.thought-card-btn:hover {
+  background: var(--pastel-peach);
+  border-color: var(--pastel-coral);
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Completion Banner / Win Screen
+   ========================================================================== */
+.game-finish-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: finishFadeIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 10;
+}
+
+@keyframes finishFadeIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.finish-content {
+  text-align: center;
+  max-width: 320px;
+}
+
+.finish-emoji {
+  font-size: 3.2rem;
+  margin-bottom: 8px;
+  animation: emojiWiggle 1.5s ease-in-out infinite;
+}
+
+@keyframes emojiWiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-8deg) scale(1.1); }
+  75% { transform: rotate(8deg) scale(1.1); }
+}
+
+.finish-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #3D2948;
+  margin-bottom: 6px;
+}
+
+.finish-message {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6C5E78;
+  margin-bottom: 18px;
+  line-height: 1.45;
+}
+
+.finish-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-play-again {
+  background: linear-gradient(135deg, #FFAAA6 0%, #FFCAD4 100%);
+  border: none;
+  color: #3B1E29;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 12px -2px rgba(255, 170, 166, 0.4);
+}
+
+.btn-play-again:hover {
+  transform: translateY(-2px);
+}
+
+.btn-back-chat {
+  background: #FAF7FB;
+  border: 1.5px solid #EAE2EF;
+  color: #594B66;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-back-chat:hover {
+  background: var(--pastel-lavender);
+  border-color: var(--pastel-lavender-deep);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 16px 12px 24px;
+  }
+
+  .site-title {
+    font-size: 2.15rem;
+  }
+
+  .site-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .pet-wrapper {
+    width: 145px;
+    height: 145px;
+  }
+
+  .pet-shadow {
+    width: 95px;
+    height: 14px;
+  }
+
+  .chat-messages {
+    max-height: 320px;
+    min-height: 200px;
+    padding: 14px 12px;
+  }
+
+  .message {
+    max-width: 92%;
+  }
+
+  .game-modal-card {
+    max-width: 100%;
+  }
+}
