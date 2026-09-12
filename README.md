@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/6ee39ae3-ed44-41af-beb2-8d5c678473f5
+
 <img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
 
 
@@ -86,11 +90,9 @@ For Hardware:
 
 ![Final](Add photo of final product here)
 *Explain the final build*
-
-### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+
+https://github.com/user-attachments/assets/aec4c6e4-521e-4f73-af18-68da16f2b8da
 
 # Additional Demos
 [Add any extra demo materials/links]
